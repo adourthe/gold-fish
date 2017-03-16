@@ -8,8 +8,10 @@ import { NavController } from 'ionic-angular';
 })
 export class EventsPage {
 
-  constructor(public navCtrl: NavController) {
+  public date;
 
+  constructor(public navCtrl: NavController) {
+    this.date = new Date();
   }
 
 }
