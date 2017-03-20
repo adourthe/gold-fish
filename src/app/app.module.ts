@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
 import { EventsPage } from "../pages/events/events";
 import { HouseworkPage } from "../pages/housework/housework";
+import { EventsService } from "../services/events-service";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,6 @@ import { HouseworkPage } from "../pages/housework/housework";
     HouseworkPage,
     TabsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},EventsService]
 })
 export class AppModule {}
