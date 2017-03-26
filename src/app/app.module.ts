@@ -1,10 +1,10 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
 import { TabsPage } from '../pages/tabs/tabs';
 import { EventsPage } from "../pages/events/events";
 import { HouseworkPage } from "../pages/housework/housework";
-import { EventsService } from "../services/events-service";
 
 @NgModule({
   declarations: [
@@ -14,7 +14,8 @@ import { EventsService } from "../services/events-service";
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -23,6 +24,6 @@ import { EventsService } from "../services/events-service";
     HouseworkPage,
     TabsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},EventsService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

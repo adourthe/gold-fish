@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-
+import { Storage } from '@ionic/storage';
 import { NavController } from 'ionic-angular';
-import { EventsService } from "../../services/events-service";
 
 @Component({
   selector: 'page-events',
@@ -10,11 +9,28 @@ import { EventsService } from "../../services/events-service";
 export class EventsPage {
 
   public date;
-  public events;
+  public events = [];
 
-  constructor(public navCtrl: NavController, private eventsService: EventsService) {
+  constructor(private storage:Storage) {
+    console.log("Events constructor");
     this.date = new Date();
-    this.events = eventsService.getEvents();
+
+    storage.ready().then(() => {
+      storage.get('events').then((val) => {
+        if (val) {
+          this.events = JSON.parse(val);
+        }
+      });
+    });
+    
   }
+
+  addEvent() {
+    this.events.push({
+      title: "New Event !"
+    });
+    this.storage.set('events', JSON.stringify(this.events));
+  }
+
 
 }
