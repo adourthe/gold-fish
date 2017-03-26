@@ -19,6 +19,10 @@ export class EventsPage {
       storage.get('events').then((val) => {
         if (val) {
           this.events = JSON.parse(val);
+          for (let i=0; i<this.events.length; i++) {
+            this.events[i].date = new Date(this.events[i].date);
+          }
+          console.log(this.events);
         }
       });
     });
@@ -27,9 +31,18 @@ export class EventsPage {
 
   addEvent() {
     this.events.push({
-      title: "New Event !"
+      title: "New Event !",
+      date: new Date()
     });
-    this.storage.set('events', JSON.stringify(this.events));
+    let eventsToSave = [];
+    for (let i=0; i<this.events.length; i++) {
+      eventsToSave.push({
+        title: this.events[i].title,
+        date: this.events[i].date.toISOString()
+      })
+    }
+    console.log(this.events);
+    this.storage.set('events', JSON.stringify(eventsToSave));
   }
 
 
