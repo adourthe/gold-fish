@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { NavController } from 'ionic-angular';
+import { ModalController } from "ionic-angular";
+import { AddEvent } from "../add-event/add-event";
 
 @Component({
   selector: 'page-events',
@@ -11,7 +12,7 @@ export class EventsPage {
   public date;
   public events = [];
 
-  constructor(private storage:Storage) {
+  constructor(private storage:Storage, private modalCtrl: ModalController) {
     console.log("Events constructor");
     this.date = new Date();
 
@@ -29,11 +30,8 @@ export class EventsPage {
     
   }
 
-  addEvent() {
-    this.events.push({
-      title: "New Event !",
-      date: new Date()
-    });
+  addEvent(event) {
+    this.events.push(event);
     let eventsToSave = [];
     for (let i=0; i<this.events.length; i++) {
       eventsToSave.push({
@@ -45,5 +43,12 @@ export class EventsPage {
     this.storage.set('events', JSON.stringify(eventsToSave));
   }
 
+  showModal() {
+    let modalPage = this.modalCtrl.create(AddEvent);
+    modalPage.onDidDismiss(data => {
+     this.addEvent(data);
+   });
+    modalPage.present();
+  }
 
 }

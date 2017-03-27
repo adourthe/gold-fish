@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ajouter un évènement
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-label floating >Titre</ion-label>
+            <ion-input [(ngModel)]="title"></ion-input>
+        </ion-item>
+        <ion-item>
+            <button ion-button (click)="dismiss()">Ajouter</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

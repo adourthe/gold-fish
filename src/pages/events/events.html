@@ -9,10 +9,11 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let event of events">
-      {{event.date | date: 'dd/MM HH:mm'}}<br><span class="event-text">{{event.title}}</span>
+      {{event.date | date: 'dd/MM HH:mm'}}
+      <div class="event-text" [innerHTML]="event.title | newlineauto : 30"></div>
     </ion-item>
   </ion-list>
-<button class="button button-float" (click)="addEvent()">
+<button class="button button-float" (click)="showModal()">
         <ion-icon name="add" class="larger"></ion-icon>
       </button>
 </ion-content>

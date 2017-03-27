@@ -5,13 +5,17 @@ import { IonicStorageModule } from '@ionic/storage';
 import { TabsPage } from '../pages/tabs/tabs';
 import { EventsPage } from "../pages/events/events";
 import { HouseworkPage } from "../pages/housework/housework";
+import { NewLineAuto } from '../pipes/newline-auto.pipe'
+import { AddEvent } from "../pages/add-event/add-event";
 
 @NgModule({
   declarations: [
     MyApp,
     EventsPage,
     HouseworkPage,
-    TabsPage
+    TabsPage,
+    NewLineAuto,
+    AddEvent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -22,7 +26,8 @@ import { HouseworkPage } from "../pages/housework/housework";
     MyApp,
     EventsPage,
     HouseworkPage,
-    TabsPage
+    TabsPage,
+    AddEvent
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
