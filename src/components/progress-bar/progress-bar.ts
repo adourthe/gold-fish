@@ -18,7 +18,7 @@ export class ProgressBarComponent {
     }
 
   updateBarColor() {
-    console.log("progress: "+this.progress);
+    console.log(this.progress);
     if (this.progress > 66) {
       this.barColor = "green";
     } else if (this.progress > 33) {

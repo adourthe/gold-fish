@@ -11,13 +11,13 @@
     <ion-item>
       Général
       <div>
-        <progress-bar [progress]=69></progress-bar>
+        <progress-bar [progress]=meanPercentage></progress-bar>
       </div>
     </ion-item>
     <ion-item *ngFor="let item of housework">
       {{item.name}}
       <div>
-        <progress-bar [progress]=32></progress-bar>
+        <progress-bar [progress]="item.percentage"></progress-bar>
       </div>
     </ion-item>
   </ion-list>
