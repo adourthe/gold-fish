@@ -6,7 +6,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { EventsPage } from "../pages/events/events";
 import { HouseworkPage } from "../pages/housework/housework";
 import { NewLineAuto } from '../pipes/newline-auto.pipe'
-import { AddEvent } from "../pages/add-event/add-event";
+import { AddEventPage } from "../pages/add-event/add-event";
+import { OrderByPipe } from "../pipes/sortby.pipe";
 
 @NgModule({
   declarations: [
@@ -14,8 +15,9 @@ import { AddEvent } from "../pages/add-event/add-event";
     EventsPage,
     HouseworkPage,
     TabsPage,
+    AddEventPage,
     NewLineAuto,
-    AddEvent
+    OrderByPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -27,7 +29,7 @@ import { AddEvent } from "../pages/add-event/add-event";
     EventsPage,
     HouseworkPage,
     TabsPage,
-    AddEvent
+    AddEventPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

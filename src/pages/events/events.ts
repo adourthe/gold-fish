@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ModalController } from "ionic-angular";
-import { AddEvent } from "../add-event/add-event";
+import { AddEventPage } from "../add-event/add-event";
 
 @Component({
   selector: 'page-events',
@@ -44,9 +44,12 @@ export class EventsPage {
   }
 
   showModal() {
-    let modalPage = this.modalCtrl.create(AddEvent);
+    let modalPage = this.modalCtrl.create(AddEventPage);
     modalPage.onDidDismiss(data => {
-     this.addEvent(data);
+      if (data != null) {
+        this.addEvent(data);
+      }
+     
    });
     modalPage.present();
   }

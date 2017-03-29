@@ -10,7 +10,27 @@
     <ion-list>
         <ion-item>
             <ion-label floating >Titre</ion-label>
-            <ion-input [(ngModel)]="title"></ion-input>
+            <ion-input clearOnEdit [(ngModel)]="title"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating >Jour</ion-label>
+            <ion-input type="number" min=1 max=31 [(ngModel)]="day"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating >Mois</ion-label>
+            <ion-input type="number" min=1 max=12 [(ngModel)]="month"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating >Année</ion-label>
+            <ion-input type="number" min=2016 [(ngModel)]="year"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating >Heures</ion-label>
+            <ion-input type="number" min=0 max=23 [(ngModel)]="hours"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating >Minutes</ion-label>
+            <ion-input type="number" min=0 max=59 [(ngModel)]="minutes"></ion-input>
         </ion-item>
         <ion-item>
             <button ion-button (click)="dismiss()">Ajouter</button>
