@@ -8,6 +8,7 @@ import { HouseworkPage } from "../pages/housework/housework";
 import { NewLineAuto } from '../pipes/newline-auto.pipe'
 import { AddEventPage } from "../pages/add-event/add-event";
 import { OrderByPipe } from "../pipes/sortby.pipe";
+import { ProgressBarComponent } from "../components/progress-bar/progress-bar";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { OrderByPipe } from "../pipes/sortby.pipe";
     TabsPage,
     AddEventPage,
     NewLineAuto,
-    OrderByPipe
+    OrderByPipe,
+    ProgressBarComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),

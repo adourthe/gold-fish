@@ -13,7 +13,6 @@ export class EventsPage {
   public events = [];
 
   constructor(private storage:Storage, private modalCtrl: ModalController) {
-    console.log("Events constructor");
     this.date = new Date();
 
     storage.ready().then(() => {
@@ -23,7 +22,6 @@ export class EventsPage {
           for (let i=0; i<this.events.length; i++) {
             this.events[i].date = new Date(this.events[i].date);
           }
-          console.log(this.events);
         }
       });
     });
@@ -39,7 +37,6 @@ export class EventsPage {
         date: this.events[i].date.toISOString()
       })
     }
-    console.log(this.events);
     this.storage.set('events', JSON.stringify(eventsToSave));
   }
 
@@ -49,8 +46,7 @@ export class EventsPage {
       if (data != null) {
         this.addEvent(data);
       }
-     
-   });
+    });
     modalPage.present();
   }
 

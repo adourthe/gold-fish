@@ -4,7 +4,6 @@ import { PipeTransform, Pipe } from "@angular/core";
 export class NewLineAuto implements PipeTransform {
 
     transform(text: string, maxLineLength: number): string {
-        console.log(text);
         let words = text.split(' ');
         let lines = [];
         let actualLine = "";

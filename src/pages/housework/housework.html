@@ -6,6 +6,19 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+    <ion-item>
+      Général
+      <div>
+        <progress-bar [progress]=69></progress-bar>
+      </div>
+    </ion-item>
+    <ion-item *ngFor="let item of housework">
+      {{item.name}}
+      <div>
+        <progress-bar [progress]=32></progress-bar>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>
