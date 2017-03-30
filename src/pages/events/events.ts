@@ -28,11 +28,29 @@ export class EventsPage {
     
   }
 
+  removeEvent(targetId) {
+    console.log(targetId);
+    for (let i=0; i<this.events.length; i++) {
+      if (this.events[i].id == targetId) {
+        this.events.splice(i, 1);
+        this.saveEvents();
+        break;
+      }
+    }
+  }
+
   addEvent(event) {
+    console.log(event);
     this.events.push(event);
+    console.log(this.events);
+    this.saveEvents();
+  }
+
+  saveEvents() {
     let eventsToSave = [];
     for (let i=0; i<this.events.length; i++) {
       eventsToSave.push({
+        id: this.events[i].id,
         title: this.events[i].title,
         date: this.events[i].date.toISOString()
       })

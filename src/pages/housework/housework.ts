@@ -7,7 +7,18 @@ import { Storage } from '@ionic/storage';
 })
 export class HouseworkPage {
 
-  public housework = [];
+  private HW_VAISSELLE = "Vaisselle";
+  private HW_BALAYAGE = "Balayage";
+  private HW_NETTOYAGE_SOL = "Nettoyage du sol";
+  private HW_NETTOYAGE_CUISINE = "Nettoyage de la cuisine";
+  private HW_NETTOYAGE_SDB = "Nettoyage de la salle de bain";
+  private HW_COURSES = "Courses";
+  private HW_POUBELLES = "Poubelles";
+  private HW_RANGEMENT = "Rangement";
+  private HW_LINGE = "Laver le linge";
+
+  private housework = [];
+  private houseworkPourcentages = [];
   public meanPercentage = 0;
 
   constructor(private storage:Storage) {
@@ -23,6 +34,11 @@ export class HouseworkPage {
           this.saveHousework();
         }
         this.initPercentages();
+        for (let i=0; i<this.housework.length; i++) {
+          this.houseworkPourcentages.push(this.housework[i].percentage);
+        }
+        console.log(this.housework);
+        console.log(this.houseworkPourcentages);
       });
     });
     
@@ -39,8 +55,23 @@ export class HouseworkPage {
     this.meanPercentage = Math.round(sum/this.housework.length);
   }
 
+  reinitPercentage(targetName) {
+    console.log(this.housework);
+    console.log(this.houseworkPourcentages);
+    for (let i=0; i<this.housework.length; i++) {
+      if (this.housework[i].name == targetName) {
+        this.housework[i].date = new Date();
+        this.housework[i].percentage = this.houseworkPourcentages[i];
+        console.log(this.housework);
+        this.saveHousework();
+        break;
+      }
+    }
+    this.initPercentages();
+  }
+
   saveHousework() {
-    let houseWorkToSave = this.housework;
+    let houseWorkToSave = this.housework.slice(0);
     for (let i=0; i<this.housework.length; i++) {
       delete houseWorkToSave[i].percentage;
     }
@@ -50,13 +81,31 @@ export class HouseworkPage {
   initHousework() {
     this.housework.push(
       {
-        name: 'Vaisselle',
+        name: this.HW_VAISSELLE,
         date: new Date()
       },{
-        name: 'Balayage',
+        name: this.HW_BALAYAGE,
         date: new Date()
       },{
-        name: 'Nettoyage du sol',
+        name: this.HW_POUBELLES,
+        date: new Date()
+      },{
+        name: this.HW_COURSES,
+        date: new Date()
+      },{
+        name: this.HW_LINGE,
+        date: new Date()
+      },{
+        name: this.HW_RANGEMENT,
+        date: new Date()
+      },{
+        name: this.HW_NETTOYAGE_SOL,
+        date: new Date()
+      },{
+        name: this.HW_NETTOYAGE_CUISINE,
+        date: new Date()
+      },{
+        name: this.HW_NETTOYAGE_SDB,
         date: new Date()
       }
     );
@@ -65,11 +114,18 @@ export class HouseworkPage {
   getDeadline(housework) {
     let day = 24*60*60*1000;
     switch (housework) {
-      case 'Vaisselle': return 2*day;
-      case 'Balayage' : return 4*day;
-      case 'Nettoyage du sol': return 8*day;
+      case this.HW_VAISSELLE : return 2*day;
+      case this.HW_BALAYAGE : return 4*day;
+      case this.HW_NETTOYAGE_SOL : return 8*day;
+      case this.HW_NETTOYAGE_CUISINE : return 5*day;
+      case this.HW_NETTOYAGE_SDB : return 7*day;
+      case this.HW_COURSES : return 3*day;
+      case this.HW_POUBELLES : return 2*day;
+      case this.HW_RANGEMENT : return 4*day;
+      case this.HW_LINGE : return 2*day;
       default: return 0;
     }
+
   }
 
 }

@@ -15,10 +15,17 @@
       </div>
     </ion-item>
     <ion-item *ngFor="let item of housework">
-      {{item.name}}
-      <div>
-        <progress-bar [progress]="item.percentage"></progress-bar>
-      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-11>{{item.name}}</ion-col>
+          <ion-col col-1><ion-icon name="timer" class="larger" (click)="reinitPercentage(item.name)"></ion-icon></ion-col>
+        </ion-row>
+        <ion-row>
+          <div style="width : 100%">
+            <progress-bar [progress]="item.percentage"></progress-bar>
+          </div>
+        </ion-row>
+      </ion-grid>
     </ion-item>
   </ion-list>
 </ion-content>

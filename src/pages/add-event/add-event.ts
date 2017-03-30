@@ -28,6 +28,7 @@ export class AddEventPage {
   dismiss() {
     let eventDate = new Date(this.year, this.month-1, this.day, this.hours, this.minutes, 0, 0);
     let data = {
+        id: new Date().getTime(),
         title: this.title,
         date: eventDate
     }

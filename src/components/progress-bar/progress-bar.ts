@@ -8,23 +8,28 @@ export class ProgressBarComponent {
  
   @Input('progress') progress;
   public barColor = "red";
+
+  private barGreen = "#2dad0a";
+  private barYellow = "#efcc1c";
+  private barRed = "#ff3700";
  
   constructor() {
     
   }
 
   ngOnChanges(changes) {
-      this.updateBarColor();
-    }
+    console.log(changes);
+    this.updateBarColor();
+  }
 
   updateBarColor() {
     console.log(this.progress);
     if (this.progress > 66) {
-      this.barColor = "green";
+      this.barColor = this.barGreen;
     } else if (this.progress > 33) {
-      this.barColor = "yellow";
+      this.barColor = this.barYellow;
     } else {
-      this.barColor = "red";
+      this.barColor = this.barRed;
     }
   }
  
